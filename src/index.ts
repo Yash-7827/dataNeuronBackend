@@ -10,12 +10,14 @@ app.use(cors.default());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 app.use(ROUTES.api.root, apiRouter);
 
 mongoose
-  .connect(`mongodb://127.0.0.1:27017/dataneuron`)
+  .connect(
+    `mongodb+srv://${env.DB_USER}:${env.DB_PASSWORD}@aaapowertech.5mjeafs.mongodb.net/?retryWrites=true&w=majority&appName=AAAPOWERTECH`
+  )
   .then(() => console.log("Database connected successfully!"))
   .catch((e) => console.log(e));
 
